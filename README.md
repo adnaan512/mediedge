@@ -1,5 +1,4 @@
-# MediEdge 🏥⚡
-
+# MediEdge 
 > **Efficient Deep Learning for Medical Image Diagnosis on Resource-Constrained Hardware**
 
 [![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/)
@@ -11,7 +10,7 @@
 
 ## Motivation
 
-Medical AI models are accurate — but heavy. They assume a GPU in the room. The clinics that need them most, rural and primary-care settings in Pakistan and similar low-resource countries, run on basic CPUs and often no internet. MediEdge answers one practical question:
+Medical AI models are accurate but heavy. They assume a GPU in the room. The clinics that need them most, rural and primary-care settings in Pakistan and similar low-resource countries, run on basic CPUs and often no internet. MediEdge answers one practical question:
 
 > **Can a lightweight model match a standard model's diagnostic accuracy at a fraction of the size and latency cost?**
 
