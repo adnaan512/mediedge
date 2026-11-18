@@ -1,0 +1,66 @@
+# MediEdge Default Configuration
+
+project:
+  name: mediedge
+  seed: 42
+  device: cpu          # 'cpu' or 'cuda' — defaults to CPU for edge deployment
+
+dataset:
+  name: dermamnist     # 'dermamnist' | 'pathmnist'
+  image_size: 28
+  batch_size: 64
+  num_workers: 2
+  data_dir: ./data/cache
+
+training:
+  epochs: 10             # Reduced for faster CPU training
+  optimizer: adam
+  lr: 0.001
+  weight_decay: 0.0001
+  scheduler: cosine    # 'cosine' | 'step' | 'none'
+  early_stopping_patience: 4
+
+baseline:
+  cnn:
+    epochs: 10
+    lr: 0.001
+  resnet18:
+    epochs: 10           # ~12–18 min on CPU (was 30 → 45 min)
+    lr: 0.0005
+    pretrained: false   # Train from scratch for fair comparison
+
+efficient:
+  mobilenetv2:
+    epochs: 10
+    lr: 0.001
+    pretrained: false
+  efficientnet_lite:
+    epochs: 10
+    lr: 0.001
+    pretrained: false
+
+compression:
+  quantization:
+    method: int8
+    calibration_batches: 10
+  pruning:
+    method: magnitude
+    sparsity_schedule: [0.20]  # 20% sparsity preserves MobileNetV2 features
+    finetune_epochs: 3
+  distillation:
+    teacher: resnet18
+    student: mobilenetv2
+    temperature: 4.0
+    alpha: 0.7           # Weight for soft labels vs hard labels
+    epochs: 10
+    lr: 0.001
+
+evaluation:
+  metrics:
+    - accuracy
+    - auc
+    - f1
+    - confusion_matrix
+  latency_warmup_runs: 10
+  latency_eval_runs: 100
+  output_dir: ./results

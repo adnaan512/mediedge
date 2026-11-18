@@ -1,0 +1,50 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg
+*.egg-info/
+dist/
+build/
+*.so
+
+# Virtual environments
+venv/
+env/
+.env/
+.venv/
+
+# Experiments (checkpoints ignored)
+experiments/
+!experiments/.gitkeep
+*.pth
+*.pt
+*.onnx
+*.pkl
+
+# Results are tracked (reports, figures, metrics)
+# (do not ignore results)
+
+# Notebooks checkpoints
+.ipynb_checkpoints/
+
+# Data cache
+data/cache/
+*.npz
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+runs/
+wandb/
